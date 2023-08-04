@@ -1,11 +1,28 @@
 package com.punkapistore;
 
+import android.os.Build;
+import android.view.Window;
+import android.view.WindowManager;
+import android.os.Bundle;
+import android.graphics.Color;
+
 import com.facebook.react.ReactActivity;
 import com.facebook.react.ReactActivityDelegate;
 import com.facebook.react.defaults.DefaultNewArchitectureEntryPoint;
 import com.facebook.react.defaults.DefaultReactActivityDelegate;
 
 public class MainActivity extends ReactActivity {
+
+  @Override
+  protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+      Window window = this.getWindow();
+      window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+      window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+      window.setNavigationBarColor(Color.parseColor("#0F0C0A")); 
+    }
+  }
 
   /**
    * Returns the name of the main component registered from JavaScript. This is used to schedule
