@@ -6,7 +6,7 @@ import {GestureHandlerRootView} from 'react-native-gesture-handler';
 import store from './store';
 import ProductList from './screens/ProductList';
 import ProductDetails from './screens/ProductDetails';
-import {StatusBar} from 'react-native';
+import {Platform, StatusBar} from 'react-native';
 
 const Stack = createStackNavigator();
 
@@ -21,7 +21,7 @@ const App = () => {
             <Stack.Screen
               name="ProductList"
               component={ProductList}
-              options={{headerShown: false}}
+              options={{headerShown: false, title: 'Product List'}}
               initialParams={{beers: []}}
             />
             <Stack.Screen
@@ -29,7 +29,7 @@ const App = () => {
               component={ProductDetails}
               options={{
                 headerShown: true,
-                title: 'Product Details',
+                title: Platform.OS == 'ios' ? 'Details' : 'Product Details',
                 headerTintColor: '#fff',
                 headerStyle: {backgroundColor: '#0F0C0A', borderBottomWidth: 0},
               }}

@@ -1,6 +1,6 @@
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
-import {View, SafeAreaView} from 'react-native';
+import {View, SafeAreaView, Platform, StatusBar} from 'react-native';
 import TheBeerSVG from '../../assets/the-beer-2.svg';
 
 interface IProps {
@@ -8,12 +8,16 @@ interface IProps {
 }
 
 const Layout = (props: IProps) => {
+  const STATUS_BAR_HEIGHT =
+    Platform.OS === 'ios' ? 20 : StatusBar.currentHeight;
+
   return (
-    <SafeAreaView style={{flex: 1, backgroundColor: 'white'}}>
+    <>
       <View
         style={{
           width: '100%',
-          height: 45,
+          height: 45 + (STATUS_BAR_HEIGHT || 0),
+          paddingTop: STATUS_BAR_HEIGHT,
           backgroundColor: '#0F0C0A',
           flexDirection: 'row',
           alignItems: 'center',
@@ -22,8 +26,10 @@ const Layout = (props: IProps) => {
           <TheBeerSVG width={140} height={45} />
         </View>
       </View>
-      {props.children}
-    </SafeAreaView>
+      <SafeAreaView style={{flex: 1, backgroundColor: 'white'}}>
+        {props.children}
+      </SafeAreaView>
+    </>
   );
 };
 
