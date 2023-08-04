@@ -17,7 +17,7 @@ const Layout = (props: IProps) => {
         style={{
           width: '100%',
           height: 45 + (STATUS_BAR_HEIGHT || 0),
-          paddingTop: STATUS_BAR_HEIGHT,
+          paddingTop: Platform.OS === 'ios' ? STATUS_BAR_HEIGHT : 0,
           backgroundColor: '#0F0C0A',
           flexDirection: 'row',
           alignItems: 'center',

@@ -29,7 +29,7 @@ const App = () => {
               component={ProductDetails}
               options={{
                 headerShown: true,
-                title: Platform.OS == 'ios' ? 'Details' : 'Product Details',
+                title: Platform.OS === 'ios' ? 'Details' : 'Product Details',
                 headerTintColor: '#fff',
                 headerStyle: {backgroundColor: '#0F0C0A', borderBottomWidth: 0},
               }}
